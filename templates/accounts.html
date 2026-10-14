@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account-Verwaltung - ViEventLog</title>
+    <title>Einstellungen - ViEventLog</title>
     <style>
         * {
             margin: 0;
@@ -256,6 +256,22 @@
             gap: 20px;
         }
 
+        .menu-setting {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            min-height: 52px;
+            margin-bottom: 0;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+        }
+
+        .menu-setting .toggle-switch {
+            flex-shrink: 0;
+        }
+
         @media (max-width: 768px) {
             .form-grid {
                 grid-template-columns: 1fr;
@@ -277,13 +293,47 @@
 <body>
     <div class="container">
         <header>
-            <h1>Account-Verwaltung</h1>
+            <h1>Einstellungen</h1>
             <div class="nav-links">
                 <a href="/">← Zurück zur Übersicht</a>
             </div>
         </header>
 
         <div id="messageContainer"></div>
+
+        <div class="section">
+            <h2>Menüeinträge</h2>
+            <div class="form-grid">
+                <label class="menu-setting">
+                    <span>SmartClimate</span>
+                    <span class="toggle-switch">
+                        <input type="checkbox" data-menu-item="smartclimate" checked>
+                        <span class="toggle-slider"></span>
+                    </span>
+                </label>
+                <label class="menu-setting">
+                    <span>Vitovent</span>
+                    <span class="toggle-switch">
+                        <input type="checkbox" data-menu-item="vitovent" checked>
+                        <span class="toggle-slider"></span>
+                    </span>
+                </label>
+                <label class="menu-setting">
+                    <span>Vitocharge</span>
+                    <span class="toggle-switch">
+                        <input type="checkbox" data-menu-item="vitocharge" checked>
+                        <span class="toggle-slider"></span>
+                    </span>
+                </label>
+                <label class="menu-setting">
+                    <span>API Test</span>
+                    <span class="toggle-switch">
+                        <input type="checkbox" data-menu-item="apitest" checked>
+                        <span class="toggle-slider"></span>
+                    </span>
+                </label>
+            </div>
+        </div>
 
         <div class="section">
             <h2>Neuen Account hinzufügen</h2>
@@ -912,7 +962,44 @@
             document.getElementById('tempEst10MinCalls').textContent = callsPer10Min;
         }
 
+        const menuVisibilityStorageKey = 'vieventlog_menu_visibility';
+
+        function loadMenuVisibilitySettings() {
+            let settings = {};
+
+            try {
+                const savedSettings = localStorage.getItem(menuVisibilityStorageKey);
+                if (savedSettings) {
+                    const parsedSettings = JSON.parse(savedSettings);
+                    if (parsedSettings && typeof parsedSettings === 'object' && !Array.isArray(parsedSettings)) {
+                        settings = parsedSettings;
+                    }
+                }
+            } catch (error) {
+                console.error('Failed to load menu visibility settings:', error);
+            }
+
+            document.querySelectorAll('[data-menu-item]').forEach((input) => {
+                input.checked = settings[input.dataset.menuItem] !== false;
+                input.addEventListener('change', saveMenuVisibilitySettings);
+            });
+        }
+
+        function saveMenuVisibilitySettings() {
+            const settings = {};
+            document.querySelectorAll('[data-menu-item]').forEach((input) => {
+                settings[input.dataset.menuItem] = input.checked;
+            });
+
+            try {
+                localStorage.setItem(menuVisibilityStorageKey, JSON.stringify(settings));
+            } catch (error) {
+                console.error('Failed to save menu visibility settings:', error);
+            }
+        }
+
         // Initial load
+        loadMenuVisibilitySettings();
         loadAccounts();
         loadArchiveSettings();
         loadTempLogSettings();

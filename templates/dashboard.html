@@ -6,6 +6,7 @@
     <title>Device Dashboard - ViEventLog</title>
     <link rel="stylesheet" href="/static/css/dashboard.css">
     <script src="/static/js/d3.v7.min.js"></script>
+    <script src="/static/js/menu-visibility.js" defer></script>
 </head>
 <body>
     <div class="container">
@@ -20,9 +21,9 @@
                     </div>
                 </div>
                 <div class="header-right">
-                    <a href="/smartclimate" class="smartclimate-link">🏠 SmartClimate</a>
-                    <a href="/vitovent" class="smartclimate-link">🌬️ Vitovent</a>
-                    <a href="/vitocharge" class="smartclimate-link">⚡ Vitocharge</a>
+                    <a href="/smartclimate" class="smartclimate-link" data-menu-item="smartclimate">🏠 SmartClimate</a>
+                    <a href="/vitovent" class="smartclimate-link" data-menu-item="vitovent">🌬️ Vitovent</a>
+                    <a href="/vitocharge" class="smartclimate-link" data-menu-item="vitocharge">⚡ Vitocharge</a>
                     <div class="last-update">
                         Letzte Aktualisierung: <span id="lastUpdate">-</span>
                     </div>
