@@ -26,6 +26,7 @@ var staticFS embed.FS
 const (
 	// Viessmann API constants
 	defaultClientSecret = "8ad97aceb92c5892e102b093c7c083fa"
+	skipHomePageLogin   = false
 )
 
 var (

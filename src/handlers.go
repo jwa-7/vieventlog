@@ -34,7 +34,7 @@ func newTemplateData() TemplateData {
 
 func indexHandler(w http.ResponseWriter, r *http.Request) {
 	// Check if credentials are available
-	if currentCreds == nil {
+	if currentCreds == nil && !skipHomePageLogin {
 		http.Redirect(w, r, "/login", http.StatusSeeOther)
 		return
 	}

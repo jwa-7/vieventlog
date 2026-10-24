@@ -3,7 +3,7 @@ services:
   vieventlog-env:
     # image: ghcr.io/mschneider82/vieventlog:latest
     build:
-      context: .
+      context: ./src
       dockerfile: Dockerfile
       args:
         VERSION: "v.0.0.999-fjwa"

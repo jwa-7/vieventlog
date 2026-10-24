@@ -1,5 +1,0 @@
-# Ignore real secrets - never commit credentials!
-secret.yaml
-
-# Ignore local kustomization
-kustomization.yaml
