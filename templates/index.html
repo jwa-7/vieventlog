@@ -425,7 +425,16 @@
             border: 1px solid rgba(197, 48, 48, 0.3);
             padding: 15px 30px;
             border-radius: 5px;
-            margin: 20px 0;
+            margin: 15px 30px;
+        }
+
+        .filter-button-wrapper {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            flex-direction: row;
+            justify-content: flex-end;
         }
 
         .filter-input {
@@ -833,32 +842,32 @@
         <div class="timeline-container" style="background: linear-gradient(to bottom, #1e1e2e 0%, #262637 100%); border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3); padding: 24px; margin-bottom: 20px; border: 1px solid rgba(255,255,255,0.1); overflow-y: auto;">
             <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; column-gap: 1rem;">
                 <div>
-                    <h2 style="margin: 0; font-size: 20px; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                    <h2 style="min-width: max-content; margin: 0; font-size: 20px; color: #fff; font-weight: 600; display: flex; align-items: center; gap: 10px;">
                         <span style="display: inline-block; width: 4px; height: 20px; background: linear-gradient(to bottom, #667eea, #764ba2); border-radius: 2px;"></span>
                         Event Timeline
                     </h2>
                     <p style="margin: 5px 0 0 14px; font-size: 12px; color: #a0a0b0;">Visualisierung der Betriebszustände</p>
                 </div>
                 <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
-                    <button id="saveFiltersBtn" onclick="saveTimelineFilters()"
-                            style="padding: 7px 13px; border: 1px solid rgba(255,255,255,0.3);
-                                   background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-                                   color: white; border-radius: 6px; cursor: pointer; font-size: 12px;
-                                   font-weight: 500; transition: all 0.2s; display: inline-flex;
-                                   align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);"
-                            title="Aktuelle Timeline-Filter-Auswahl im Browser speichern">
-                        💾 Auswahl speichern
-                    </button>
-                    <button id="resetFiltersBtn" onclick="resetTimelineFilters()"
-                            style="padding: 7px 13px; border: 1px solid rgba(255,255,255,0.2);
-                                   background: rgba(255,255,255,0.05);
-                                   color: #a0a0b0; border-radius: 6px; cursor: pointer; font-size: 12px;
-                                   font-weight: 500; transition: all 0.2s; display: inline-flex;
-                                   align-items: center; gap: 6px;"
-                            title="Timeline-Filter auf Standardwerte zurücksetzen">
-                        🔄 Reset
-                    </button>
-                    <div id="timelineControls" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <div class="filter-button-wrapper">
+                        <button id="saveFiltersBtn" onclick="saveTimelineFilters()"
+                                style="padding: 7px 13px; border: 1px solid rgba(255,255,255,0.3);
+                                       background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+                                       color: white; border-radius: 6px; cursor: pointer; font-size: 12px;
+                                       font-weight: 500; transition: all 0.2s; display: inline-flex;
+                                       align-items: center; gap: 6px; box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);"
+                                title="Aktuelle Timeline-Filter-Auswahl im Browser speichern">
+                            💾 Auswahl speichern
+                        </button>
+                        <button id="resetFiltersBtn" onclick="resetTimelineFilters()"
+                                style="padding: 7px 13px; border: 1px solid rgba(255,255,255,0.2);
+                                       background: rgba(255,255,255,0.05);
+                                       color: #a0a0b0; border-radius: 6px; cursor: pointer; font-size: 12px;
+                                       font-weight: 500; transition: all 0.2s; display: inline-flex;
+                                       align-items: center; gap: 6px;"
+                                title="Timeline-Filter auf Standardwerte zurücksetzen">
+                            🔄 Reset
+                        </button>
                         <button id="toggleTimelineFiltersBtn" type="button"
                             aria-expanded="false" aria-controls="timelineFilterButtons"
                                 onclick="toggleTimelineFilterButtons()"
@@ -868,6 +877,8 @@
                                        font-weight: 500; transition: all 0.2s;">
                             🔽 Filter anzeigen
                         </button>
+                    </div>
+                    <div id="timelineControls" style="display: flex; gap: 8px; flex-wrap: wrap;">
                         <div id="timelineFilterButtons" style="display: none; gap: 8px; flex-wrap: wrap;"></div>
                     </div>
                 </div>
