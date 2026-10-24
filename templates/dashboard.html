@@ -8,7 +8,7 @@
     <script src="/static/js/d3.v7.min.js"></script>
     <script src="/static/js/menu-visibility.js" defer></script>
 </head>
-<body>
+<body class="dashboard-read-only">
     <div class="container">
         <header>
             <div class="header-top">
@@ -43,13 +43,14 @@
                 </select>
             </div>
             <div class="button-group">
-                <button id="debugBtn" class="btn-debug">🐛 Debug Geräte</button>
+                <button id="debugBtn" class="btn-debug" disabled data-edit-mode-disabled="false">🐛 Debug Geräte</button>
                 <button id="refreshBtn">🔄 Aktualisieren</button>
+                <button id="editModeBtn" class="btn-edit-mode" type="button" aria-pressed="false" title="Bearbeitungsmodus aktivieren">✏️ Bearbeiten</button>
             </div>
         </div>
 
         <div id="errorContainer"></div>
-        <div id="dashboardContent" class="loading">
+        <div id="dashboardContent" class="loading" inert>
             <div class="spinner"></div>
             <p>Lade Dashboard-Daten...</p>
         </div>
