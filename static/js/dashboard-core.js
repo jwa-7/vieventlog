@@ -506,7 +506,6 @@ function setDashboardEditMode(enabled) {
     const readOnly = !enabled;
 
     document.body.classList.toggle('dashboard-read-only', readOnly);
-    document.getElementById('dashboardContent').inert = readOnly;
     document.querySelectorAll('.debug-modal').forEach(modal => {
         modal.inert = readOnly;
     });

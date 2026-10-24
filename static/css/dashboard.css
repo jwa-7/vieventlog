@@ -93,12 +93,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+
         }
 
         .install-select {
             display: flex;
             gap: 15px;
             align-items: center;
+            flex-grow: 9999999;
         }
 
         select {
@@ -126,6 +130,13 @@
         .button-group {
             display: flex;
             gap: 10px;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+
+        .button-group>button {
+            width: 100%;
+            min-width: max-content;
         }
 
         .btn-smartclimate {
@@ -203,6 +214,10 @@
         body.dashboard-read-only #dashboardContent,
         body.dashboard-read-only .debug-modal {
             pointer-events: none;
+        }
+
+        body.dashboard-read-only #dashboardContent .refrigerant-diagram {
+            pointer-events: auto;
         }
 
         /* Dashboard Grid */
